@@ -46,17 +46,17 @@ class ViewController: UIViewController, AlbumsListDataSourceDelegate {
     }
     
     func fetchData(){
-        viewModel.fetchData { [weak self] albums
+        viewModel.fetchData { albums
             in
-            self?.dataSource.updateAlbums(albums)
+            self.dataSource.updateAlbums(albums)
             DispatchQueue.main.async {
-                self?.tableView.reloadData()
+                self.tableView.reloadData()
             }
         }
     }
     
     func didSelectAlbums(album: Album) {
-        print(album.title)
+        navigationController?.pushViewController(DetailViewController(), animated: true)
     }
 }
 
